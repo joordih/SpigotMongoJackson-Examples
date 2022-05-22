@@ -103,6 +103,7 @@ public class User implements Model {
 }`
 
 User Manager example
+
 `@Getter
 public class UserManager {
 
@@ -118,6 +119,7 @@ public class UserManager {
 }`
 
 ObjectRepository
+
 `public interface ObjectRepository<O extends Model> {
 
   O find(String id);
@@ -126,6 +128,7 @@ ObjectRepository
 }`
 
 MongoObjectRepository
+
 `public class MongoObjectRepository<O extends Model> implements ObjectRepository<O> {
 
   private MongoCollection<O> collection;
@@ -157,6 +160,7 @@ MongoObjectRepository
 }`
 
 Model class
+
 `
 public interface Model {
 
@@ -203,6 +207,7 @@ public class MongoConnector {
 }`
 
 User listeners
+
 
 `
   @EventHandler
