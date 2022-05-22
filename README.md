@@ -2,8 +2,8 @@
 
 User class example: 
 
-`@Getter
-@Setter
+```java
+@Getter @Setter
 public class User implements Model {
 
     private final String id;
@@ -100,11 +100,13 @@ public class User implements Model {
         double b = Math.round(percent * 10.0) / 10.0;
         return b;
     }
-}`
+}
+```
 
-User Manager example
+**User Manager example**
 
-`@Getter
+```java
+@Getter
 public class UserManager {
 
   private final ObjectRepository<User> userObjectRepository;
@@ -116,20 +118,24 @@ public class UserManager {
     );
     userObjectRepository = new MongoObjectRepository<>(collection);
   }
-}`
+}
+```
 
 ObjectRepository
 
-`public interface ObjectRepository<O extends Model> {
+```java
+public interface ObjectRepository<O extends Model> {
 
   O find(String id);
   void remove(String id);
   void save(O model);
-}`
+}
+```
 
 MongoObjectRepository
 
-`public class MongoObjectRepository<O extends Model> implements ObjectRepository<O> {
+```java
+public class MongoObjectRepository<O extends Model> implements ObjectRepository<O> {
 
   private MongoCollection<O> collection;
 
@@ -157,21 +163,24 @@ MongoObjectRepository
             new ReplaceOptions().upsert(true)
     );
   }
-}`
+}
+```
 
 Model class
 
-`
+```java
 public interface Model {
 
   @JsonProperty("_id")
   String getId();
-}`
+}
+```
 
 
 Mongo Connector
 
-`@Getter
+```java
+@Getter
 public class MongoConnector {
 
   private MongoClient mongoClient;
@@ -204,13 +213,14 @@ public class MongoConnector {
     mapper.registerModule(new Jdk8Module());
     return mapper;
   }
-}`
+}
+```
 
 User listeners
 
 
-`
-  @EventHandler
+```java
+@EventHandler
   public void onAsyncPlayerJoin(AsyncPlayerPreLoginEvent event) {
     String id = event.getUniqueId().toString();
     User user = userManager.getUserObjectRepository().find(id);
@@ -232,7 +242,6 @@ User listeners
                     userManager.getUserObjectRepository().save(user)
     );
   }
-
-`
+  ```
 
 
