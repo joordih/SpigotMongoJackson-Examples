@@ -1,4 +1,6 @@
-# Jackson-Mapper-Examples-
+# Jackson-Mapper-Examples
+
+## Hardcoded example for using mongodb jackson mapper on a spigot plugins
 
 User class example: 
 
